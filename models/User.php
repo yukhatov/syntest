@@ -10,7 +10,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     public $authKey;
     public $accessToken;
 
-    /*private static $users = [
+    private static $users = [
         '100' => [
             'id' => '100',
             'username' => 'admin',
@@ -25,7 +25,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
             'authKey' => 'test101key',
             'accessToken' => '101-token',
         ],
-    ];*/
+    ];
 
 
     public static function tableName()
@@ -38,7 +38,6 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
      */
     public static function findIdentity($id)
     {
-        //die($id);
 
         //return isset(self::$users[$id]) ? new static(self::$users[$id]) : null;
         return static::findOne($id);

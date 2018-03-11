@@ -51,9 +51,11 @@ $config = [
             'enableStrictParsing' => true,
             'showScriptName' => false,
             'rules' => [
+                //['class' => 'yii\rest\UrlRule', 'controller' => 'rest/patient'],
                 'site' => 'site/index',
                 'site/login' => 'site/login',
                 'site/logout' => 'site/logout',
+                /*'user/login' => 'user/login',*/
 
                 'patients' => 'patient/index',
                 'patient/create' => 'patient/create',
