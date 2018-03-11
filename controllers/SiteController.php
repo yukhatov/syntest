@@ -63,10 +63,6 @@ class SiteController extends Controller
     public function actionIndex()
     {
         return $this->redirect(['patient/index']);
-        
-        //$patients = Patient::find()->all();
-
-        return $this->render('index'/*, ['patients' => $patients]*/);
     }
 
     /**
@@ -82,7 +78,7 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+            return $this->goBack(['patient/index']);
         }
 
         $model->password = '';

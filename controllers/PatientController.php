@@ -7,26 +7,20 @@ use app\models\Patient;
 use app\models\PatientSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * PatientController implements the CRUD actions for Patient model.
  */
 class PatientController extends Controller
 {
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
+    public function beforeAction($action){
+        if (parent::beforeAction($action)){
+            if (Yii::$app->user->isGuest){
+                return $this->redirect(Yii::$app->user->loginUrl)->send();
+            }
+        }
+
+        return true;
     }
 
     /**
